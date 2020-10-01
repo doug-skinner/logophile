@@ -1,0 +1,22 @@
+{
+    "name": "@dougskinner/node-server-logger",
+    "version": "1.1.0",
+    "description": "A basic logging utility based on winston",
+    "main": "src/index.js",
+    "scripts": {
+        "check": "eslint src"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/doug-skinner/node-server-logger.git"
+    },
+    "author": "Doug Skinner",
+    "license": "ISC",
+    "peerDependencies": {},
+    "devDependencies": {
+        "@dougskinner/eslint-config": "^2.8.0"
+    },
+    "dependencies": {
+        "winston": "^3.2.1"
+    }
+}
