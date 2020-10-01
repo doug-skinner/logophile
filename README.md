@@ -14,11 +14,11 @@ const logger = require('@dougskinner/node-server-logger');
 
 The following log levels can be used by this logger:
 
--   debug
--   info
--   warn
--   error
--   trace
+- debug
+- info
+- warn
+- error
+- trace
 
 Each logger method can be called in the same way:
 
