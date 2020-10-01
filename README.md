@@ -50,6 +50,16 @@ Additionally, you can use `OFF` for silencing logs during unit tests.
 
 ### API Documentation
 
+#### log
+
+Used to log messages when you don't want to include any other information. This is analogous to a `console.log()` statement.
+
+Usage:
+
+```js
+logger.log('some message');
+```
+
 #### error
 
 Logging an error message.
