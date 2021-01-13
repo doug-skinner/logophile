@@ -1,4 +1,4 @@
-# Node Server Logger
+# Logophile
 
 A basic logging utility based on [winston](https://github.com/winstonjs/winston).
 
@@ -7,7 +7,7 @@ A basic logging utility based on [winston](https://github.com/winstonjs/winston)
 To use the logger, just require the package as follows
 
 ```js
-const logger = require('@dougskinner/node-server-logger');
+const logger = require('logophile');
 ```
 
 ### Log Levels
