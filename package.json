@@ -1,6 +1,6 @@
 {
     "name": "logophile",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "A basic logging utility based on winston",
     "main": "src/index.js",
     "scripts": {
