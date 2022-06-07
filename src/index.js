@@ -9,14 +9,14 @@ const logLevels = Object.freeze({
     info: 2,
     off: -1,
     trace: 3,
-    warn: 1
+    warn: 1,
 })
 
 const GLOBAL_LOG_CONTEXT = {}
 
 const globalLogContextKeysFormat = format((info) => ({
     ...info,
-      ...GLOBAL_LOG_CONTEXT
+    ...GLOBAL_LOG_CONTEXT,
 }))
 
 const errorFormat = () => {
@@ -24,7 +24,7 @@ const errorFormat = () => {
         label,
         level,
         message,
-        stack
+        stack,
     })
     const replacer = (key, value) => {
         if (value instanceof Error) {
@@ -42,14 +42,14 @@ const CURRENT_FORMAT = [
     errorFormat(),
     timestamp(),
     json(),
-    errorFormat()
+    errorFormat(),
 ]
 const CURRENT_TRANSPORTS = [new transports.Console()]
 
 const CURRENT_CONFIG = {
     format: combine(...CURRENT_FORMAT),
     levels: logLevels,
-    transports: CURRENT_TRANSPORTS
+    transports: CURRENT_TRANSPORTS,
 }
 
 const initConfig = () => {
@@ -67,9 +67,7 @@ const getLoggerImpl = () => {
 }
 
 const setLogLevel = (level) => {
-    CURRENT_CONFIG.level = level
-        ? level.toLowerCase()
-        : DEFAULT_LEVEL
+    CURRENT_CONFIG.level = level ? level.toLowerCase() : DEFAULT_LEVEL
     CURRENT_TRANSPORTS.forEach((transport) => {
         transport.level = CURRENT_CONFIG.level
     })
@@ -79,10 +77,7 @@ const setLogLevel = (level) => {
 const getLogLevel = () => CURRENT_CONFIG.level || DEFAULT_LEVEL
 
 const addGlobalLogContextKeys = (keys = {}) => {
-    Object.assign(
-        GLOBAL_LOG_CONTEXT,
-        keys
-    )
+    Object.assign(GLOBAL_LOG_CONTEXT, keys)
     getLoggerImpl().configure(CURRENT_CONFIG)
 }
 
@@ -105,5 +100,5 @@ module.exports = {
     log,
     setLogLevel,
     trace,
-    warn
+    warn,
 }
