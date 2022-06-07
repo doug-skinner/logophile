@@ -16,7 +16,7 @@ const GLOBAL_LOG_CONTEXT = {}
 
 const globalLogContextKeysFormat = format((info) => ({
     ...info,
-    ...GLOBAL_LOG_CONTEXT
+      ...GLOBAL_LOG_CONTEXT
 }))
 
 const errorFormat = () => {

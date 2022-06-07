@@ -12,9 +12,12 @@
     },
     "author": "Doug Skinner",
     "license": "ISC",
-    "peerDependencies": {},
     "devDependencies": {
-        "@dougskinner/eslint-config": "^2.8.0"
+        "eslint": "^8.17.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "node": "^16.14.2",
+        "prettier": "^2.6.2"
     },
     "dependencies": {
         "winston": "^3.2.1"
