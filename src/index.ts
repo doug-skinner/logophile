@@ -14,39 +14,16 @@ const logLevels = Object.freeze({
 
 const GLOBAL_LOG_CONTEXT = {}
 
-const globalLogContextKeysFormat = format((info) => ({
+const globalLogContextKeysFormat = format((info: object) => ({
     ...info,
     ...GLOBAL_LOG_CONTEXT,
 }))
 
-const errorFormat = () => {
-    const replaceError = ({ label, level, message, stack }) => ({
-        label,
-        level,
-        message,
-        stack,
-    })
-    const replacer = (key, value) => {
-        if (value instanceof Error) {
-            return replaceError(value)
-        }
-
-        return value
-    }
-
-    return format.json({ replacer })
-}
-
-const CURRENT_FORMAT = [
-    globalLogContextKeysFormat(),
-    errorFormat(),
-    timestamp(),
-    json(),
-    errorFormat(),
-]
+const CURRENT_FORMAT = [globalLogContextKeysFormat(), timestamp(), json()]
 const CURRENT_TRANSPORTS = [new transports.Console()]
 
 const CURRENT_CONFIG = {
+    level: DEFAULT_LEVEL,
     format: combine(...CURRENT_FORMAT),
     levels: logLevels,
     transports: CURRENT_TRANSPORTS,
@@ -66,7 +43,7 @@ const getLoggerImpl = () => {
     return loggerImpl
 }
 
-const setLogLevel = (level) => {
+const setLogLevel = (level: string) => {
     CURRENT_CONFIG.level = level ? level.toLowerCase() : DEFAULT_LEVEL
     CURRENT_TRANSPORTS.forEach((transport) => {
         transport.level = CURRENT_CONFIG.level
@@ -81,15 +58,15 @@ const addGlobalLogContextKeys = (keys = {}) => {
     getLoggerImpl().configure(CURRENT_CONFIG)
 }
 
-const error = (...args) => getLoggerImpl().error(...args)
-const warn = (...args) => getLoggerImpl().warn(...args)
-const info = (...args) => getLoggerImpl().info(...args)
-const debug = (...args) => getLoggerImpl().debug(...args)
-const trace = (...args) => getLoggerImpl().trace(...args)
+const error = (...args: []) => getLoggerImpl().error(...args)
+const warn = (...args: []) => getLoggerImpl().warn(...args)
+const info = (...args: []) => getLoggerImpl().info(...args)
+const debug = (...args: []) => getLoggerImpl().debug(...args)
+const trace = (...args: []) => getLoggerImpl().trace(...args)
 
 // Necessary for output when you don't want to include the context keys
 // eslint-disable-next-line no-console
-const log = (...args) => console.log(...args)
+const log = (...args: []) => console.log(...args)
 
 module.exports = {
     addGlobalLogContextKeys,
