@@ -68,7 +68,7 @@ const trace = (...args: []) => getLoggerImpl().trace(...args)
 // eslint-disable-next-line no-console
 const log = (...args: []) => console.log(...args)
 
-module.exports = {
+export default {
     addGlobalLogContextKeys,
     debug,
     error,
