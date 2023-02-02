@@ -58,15 +58,15 @@ const addGlobalLogContextKeys = (keys = {}) => {
     getLoggerImpl().configure(CURRENT_CONFIG)
 }
 
-const error = (...args: []) => getLoggerImpl().error(...args)
-const warn = (...args: []) => getLoggerImpl().warn(...args)
-const info = (...args: []) => getLoggerImpl().info(...args)
-const debug = (...args: []) => getLoggerImpl().debug(...args)
-const trace = (...args: []) => getLoggerImpl().trace(...args)
+const error = (...args: any) => getLoggerImpl().error(...args)
+const warn = (...args: any) => getLoggerImpl().warn(...args)
+const info = (...args: any) => getLoggerImpl().info(...args)
+const debug = (...args: any) => getLoggerImpl().debug(...args)
+const trace = (...args: any) => getLoggerImpl().trace(...args)
 
 // Necessary for output when you don't want to include the context keys
 // eslint-disable-next-line no-console
-const log = (...args: []) => console.log(...args)
+const log = (...args: any) => console.log(...args)
 
 export default {
     addGlobalLogContextKeys,
