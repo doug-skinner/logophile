@@ -1,6 +1,10 @@
+import { setMaxListeners } from 'process'
+
 const { createLogger, format, transports } = require('winston')
 
 const { combine, timestamp, json } = format
+
+setMaxListeners(Infinity)
 
 const DEFAULT_LEVEL = 'info'
 const logLevels = Object.freeze({
